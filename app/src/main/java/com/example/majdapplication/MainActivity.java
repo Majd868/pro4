@@ -12,13 +12,34 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 public class MainActivity extends AppCompatActivity {
-    Intent intent=new Intent(MainActivity.this,login.class);
+    Intent intent;
+    boolean isLog=false;
+    BottomNavigationView navMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+        navMenu=findViewById(R.id.bottomNavigationView);
+        navMenu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id=item.getItemId();
+                if(id==R.id.Dash && isLog){
+                    intent=new Intent(MainActivity.this,DashBoard.class);
+                    startActivity(intent);}
+                if(id==R.id.Login){
+                    isLog=true;
+                    intent=new Intent(MainActivity.this,login.class);
+                    startActivity(intent);
+                }
+
+                return true;
+            }
+        });
 
 
 
@@ -30,18 +51,8 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id=item.getItemId();
-        if(id==R.id.Dash){
-            Intent intent2=new Intent(MainActivity.this,DashBoard.class);
-            startActivity(intent2);}
-        if(id==R.id.Login)
-            startActivity(intent);
 
-    return true;
 
-    }
 
 
 
