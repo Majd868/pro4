@@ -29,10 +29,14 @@ Intent intent;
     }
 public void s(View view){
     int id =view.getId();
-    if(id ==R.id.logout)
+    if(id ==R.id.logout){
         intent=new Intent(this,MainActivity.class);
+        intent.putExtra("boolvalue","loged");
     startActivity(intent);
-    if(id ==R.id.exit)
-        System.exit(0);
+    }
+    if(id == R.id.exit)
+        finish();
+    finishAffinity();
+    System.exit(0);;
 }
     }

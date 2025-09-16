@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class login extends AppCompatActivity {
+
     EditText us;
     EditText pas;
     Button b1;
@@ -26,15 +27,23 @@ public class login extends AppCompatActivity {
         pas=findViewById(R.id.pas);
         b1=findViewById(R.id.log);
         b2=findViewById(R.id.canc);
+        b1.setOnClickListener(this::todash);
+
     }
 
     public void todash(View view) {
-        if(us.getText().equals("majd") && pas.getText().equals("123")){
+        //Intent intent1=new Intent(this,MainActivity.class);//
+        if(us.getText().toString().equals("majd") && pas.getText().toString().equals("456")){
+            Toast.makeText(this, "WORKING", Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(this,DashBoard.class);
-        startActivity(intent);}
+
+            startActivity(intent);
+
+        }
 
 }
     public void cancel(View view) {
+
         finish();
     }
 }

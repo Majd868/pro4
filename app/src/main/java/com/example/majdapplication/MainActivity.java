@@ -16,23 +16,33 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
-    Intent intent;
-    boolean isLog=false;
+
+    Intent intent,int1;
+    String ok="s";
+    boolean entered=false;
     BottomNavigationView navMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navMenu=findViewById(R.id.bottomNavigationView);
+
+        int1=getIntent();
+        ok=int1.getStringExtra("boolvalue");
         navMenu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id=item.getItemId();
-                if(id==R.id.Dash && isLog){
+                if(id==R.id.Dash){
+                        int1=getIntent();
+                        ok=int1.getStringExtra("boolvalue");
+
+                    if("loged".equals(ok)){
                     intent=new Intent(MainActivity.this,DashBoard.class);
-                    startActivity(intent);}
+                    startActivity(intent);}}
                 if(id==R.id.Login){
-                    isLog=true;
+                    entered=true;
                     intent=new Intent(MainActivity.this,login.class);
                     startActivity(intent);
                 }
