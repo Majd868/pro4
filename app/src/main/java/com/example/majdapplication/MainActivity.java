@@ -17,7 +17,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Intent intent,int1;
+    Intent int1;
     String ok="s";
     boolean entered=false;
     BottomNavigationView navMenu;
@@ -39,19 +39,19 @@ public class MainActivity extends AppCompatActivity {
                         ok=int1.getStringExtra("boolvalue");
 
                     if("loged".equals(ok)){
-                    intent=new Intent(MainActivity.this,DashBoard.class);
-                    startActivity(intent);}}
+                    Intent intent=new Intent(MainActivity.this,DashBoard.class);
+                    startActivity(intent);
+                    }
+                }
                 if(id==R.id.Login){
                     entered=true;
-                    intent=new Intent(MainActivity.this,login.class);
-                    startActivity(intent);
+                    Intent int2=new Intent(MainActivity.this,Login.class);
+                    startActivity(int2);
                 }
 
                 return true;
             }
         });
-
-
 
     }
 
@@ -62,10 +62,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-    }
+}
